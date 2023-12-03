@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANV24/1 Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add the new CSS for hiding the navigation bar */
+        .nav-hidden {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="main-nav container flex">
+            <a href="#" onclick="reload()" class="company-logo">
+                <img src="images/logo.png" alt="company logo">
+            </a>
+            <div class="nav-links">
+                <ul class="flex">
+                    <li class="hover-link nav-item" id="ipl" onclick="onNavItemClick('ipl')">IPL</li>
+                    <li class="hover-link nav-item" id="finance" onclick="onNavItemClick('finance')">Finance</li>
+                    <li class="hover-link nav-item" id="politics" onclick="onNavItemClick('politics')">Politics</li>
+                </ul>
+            </div>
+            <div class="search-bar flex">
+                <input id="search-text" type="text" class="news-input" placeholder="e.g. Science">
+                <button id="search-button" class="search-button">Search</button>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="cards-container container flex" id="cards-container">
+            
+        </div>
+    </main>
+
+    <template id="template-news-card">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="news-image" id="news-img">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">This is the Title</h3>
+                <h6 class="news-source" id="news-source">End Gadget 26/08/2023</h6>
+                <p class="news-desc" id="news-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae saepe quis voluptatum quisquam vitae doloremque facilis molestias quae ratione cumque!</p>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+    <script>
+        // Add the new JavaScript for hiding/showing the navigation bar
+        document.addEventListener("DOMContentLoaded", function () {
+            var navBar = document.querySelector('nav');
+            var lastScrollTop = 0;
+
+            window.addEventListener("scroll", function () {
+                var st = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (st > lastScrollTop) {
+                    // Scroll down, hide the navigation bar
+                    navBar.classList.add('nav-hidden');
+                } else {
+                    // Scroll up, show the navigation bar
+                    navBar.classList.remove('nav-hidden');
+                }
+
+                lastScrollTop = st;
+            });
+        });
+
+        function reload() {
+            location.reload();
+        }
+
+        function onNavItemClick(item) {
+            // Handle navigation item click
+            // Add your logic here
+        }
+    </script>
+</body>
+</html>
